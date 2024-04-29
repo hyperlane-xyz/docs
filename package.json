@@ -4,9 +4,9 @@
     "version": "0.0.0",
     "devDependencies": {
         "@hyperlane-xyz/core": "^1.4.2",
-        "@hyperlane-xyz/sdk": "^1.4.2",
-        "@hyperlane-xyz/hyperlane-token": "^1.4.2",
         "@hyperlane-xyz/helloworld": "^1.4.2",
+        "@hyperlane-xyz/hyperlane-token": "^1.4.2",
+        "@hyperlane-xyz/sdk": "^1.5.5-beta0",
         "@types/node": "^18.11.18",
         "glob": "^8.1.0",
         "markdown-table": "^3.0.3",

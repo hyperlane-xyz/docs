@@ -2,7 +2,7 @@
 description: Manually pay a relayer to deliver messages
 ---
 
-# Manually pay for interchain gas
+# Pay for interchain gas
 
 {% hint style="info" %}
 Read up on [interchain-gas-payments.md](../../protocol/interchain-gas-payments.md "mention") and the [interchain-gas-paymaster-api.md](../../apis-and-sdks/interchain-gas-paymaster-api.md "mention")
@@ -16,9 +16,9 @@ In some cases (e.g. [quickstarts](../quickstarts/ "mention")) it may be useful t
 
 To make a manual gas payment, you will need
 
-* The `$MESSAGE_ID` of the interchain message you are paying for
-* The `$DESTINATION_DOMAIN` of the interchain message you are paying for
-* The `$GAS_AMOUNT` that you need in order to deliver your message on the destination chain
+- The `$MESSAGE_ID` of the interchain message you are paying for
+- The `$DESTINATION_DOMAIN` of the interchain message you are paying for
+- The `$GAS_AMOUNT` that you need in order to deliver your message on the destination chain
 
 ### Finding your message ID
 
@@ -43,18 +43,19 @@ If you have the hash of the transaction that sent your interchain message, you c
 
 **Make the interchain gas payment**
 
-1. Still on the `DefaultIsmInterchainGasPaymaster` contract page on Etherscan, select `Write Contract`.
-2. Click on the `Connect to Web3` button to connect your Wallet (i.e. Metamask). Make sure that you are on the correct network.
-3. Expand the `payForGas` function.
-4. For the payable amount, Etherscan expects an amount quoted in ether, while our `$GAS_PAYMENT_QUOTE` is in wei. To convert from wei to ether, input the amount `$GAS_PAYMENT_QUOTE`, which is in wei, into [https://eth-converter.com/](https://eth-converter.com/) and copy the ether amount. Use this ether amount as the payable amount.
-5. For the message ID, input your `$MESSAGE_ID`.
-6. For the destination domain, input your `$DESTINATION_DOMAIN`.
-7. For gas amount, enter `$GAS_AMOUNT`.
-8. For the refund address, input the address of the account you will sign the transaction with. This will receive a potential refund if you overpay for interchain gas.
+1.  Still on the `DefaultIsmInterchainGasPaymaster` contract page on Etherscan, select `Write Contract`.
+2.  Click on the `Connect to Web3` button to connect your Wallet (i.e. Metamask). Make sure that you are on the correct network.
+3.  Expand the `payForGas` function.
+4.  For the payable amount, Etherscan expects an amount quoted in ether, while our `$GAS_PAYMENT_QUOTE` is in wei. To convert from wei to ether, input the amount `$GAS_PAYMENT_QUOTE`, which is in wei, into [https://eth-converter.com/](https://eth-converter.com/) and copy the ether amount. Use this ether amount as the payable amount.
+5.  For the message ID, input your `$MESSAGE_ID`.
+6.  For the destination domain, input your `$DESTINATION_DOMAIN`.
+7.  For gas amount, enter `$GAS_AMOUNT`.
+8.  For the refund address, input the address of the account you will sign the transaction with. This will receive a potential refund if you overpay for interchain gas.
 9.  Click "Write" and submit the transaction via your wallet/Metamask.
 
-    <figure><img src="../../.gitbook/assets/Screen Shot 2023-01-30 at 2.05.42 PM.png" alt=""><figcaption></figcaption></figure>
-{% endtab %}
+        <figure><img src="../../.gitbook/assets/Screen Shot 2023-01-30 at 2.05.42 PM.png" alt=""><figcaption></figcaption></figure>
+
+    {% endtab %}
 
 {% tab title="Using cast" %}
 **Getting the interchain gas payment quote**
@@ -62,9 +63,11 @@ If you have the hash of the transaction that sent your interchain message, you c
 First, get a quote for how much your gas payment will cost, and save this in an environment variable called `$GAS_PAYMENT_QUOTE`:
 
 {% code overflow="wrap" %}
+
 ```shell
 cast call $IGP_ADDRESS "quoteGasPayment(uint32,uint256)" $DESTINATION_DOMAIN $GAS_AMOUNT --rpc-url $RPC_URL
 ```
+
 {% endcode %}
 
 **Make the interchain gas payment**
@@ -74,6 +77,7 @@ Now, we can call `payGasFor`, and we supply the gas payment quote as value in th
 <pre class="language-shell" data-overflow="wrap"><code class="lang-shell"><strong>cast send $IGP_ADDRESS "payForGas(bytes32,uint32,uint256,address)" $MESSAGE_ID $DESTINATION_DOMAIN $GAS_AMOUNT $MY_ADDRESS --rpc-url $RPC_URL
 </strong><strong>--private-key $PRIVATE_KEY --value $GAS_PAYMENT_QUOTE
 </strong></code></pre>
+
 {% endtab %}
 {% endtabs %}
 
