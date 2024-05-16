@@ -141,7 +141,7 @@ Advanced use - [read here](../build-with-hyperlane/guides/developers/paying-for-
 
 ### DefaultIsmInterchainGasPaymaster
 
-Read about this [here](../build-with-hyperlane/guides/developers/paying-for-interchain-gas/which-igp-to-use-and-understanding-gas-amounts.md#when-using-the-default-ism-for-most-applications)
+Read about this [here](../build-with-hyperlane/guides/paying-for-interchain-gas/which-igp-to-use-and-understanding-gas-amounts.md#when-using-the-default-ism-for-most-applications)
 | Network        | Address                                      | Explorer                                                                                                                        |
 | -------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Alfajores      | `0xF90cB82a76492614D07B82a7658917f3aC811Ac1` | [View on alfajores.celoscan.io](https://alfajores.celoscan.io/address/0xF90cB82a76492614D07B82a7658917f3aC811Ac1)               |
